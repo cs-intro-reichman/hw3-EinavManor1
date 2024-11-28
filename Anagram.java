@@ -32,41 +32,47 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		boolean isAnagram = false;	
+		boolean isAnagram = true;	
 		String s1 = (str1);
 		String s2 = (str2);
 		int i = 0;
 		int j = 0;
-		while(i < s1.length()){
+		if((s1.length()) != (s2.length())){
+			isAnagram = false;
+			return isAnagram;
+		}
+		while(i < (s1.length())){
 			char letter1 =s1.charAt(i);
 			int ascii1 = (int)letter1;
-				while(i < s1.length()){
-					char letter2 =s2.charAt(i);
+			char letter2 =s2.charAt(j);	
+				while(j < (s2.length())){
 					int ascii2 = (int)letter2;
 					if(ascii2 == ascii1){
-						j++;
+						i++;
+						j = 0;
 					}else{
-						return isAnagram;
+						j++;
 					}
-				}
-			i++;
-		isAnagram = true;
+				}	
+			if(j == (s2.length())){
+					isAnagram = false;
+					break;
+			}
 	}
 	return isAnagram;
-}
-	   
+} 
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		int lengthString = str.length();
+		int lengthString = (str.length());
 		int i = 0;
 		String bitArray = "";
 		
 		while (i < lengthString){
 			char letter = str.charAt(i);
 			int ascii = (int)letter;
-			if(ascii <= 122 && ascii >= 65){
+			if((ascii <= 122 && ascii >= 65)|| ascii == 32){
 				bitArray = bitArray + letter;
 				i++;
 			}else{
@@ -81,14 +87,14 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
 		String cleanString = preProcess(str);
-		int lengthCS = cleanString.length();
+		int lengthCS = (cleanString.length());
 		String newAnagram = "";
 		int i = 0;
 		int j = 0;
 		while(i < lengthCS){
 		char letter =cleanString.charAt(i);
 		int ascii = (int)letter;
-			while(j < newAnagram.length()){
+			while(j < (newAnagram.length())){
 				char letterInString = cleanString.charAt(i);
 				int ascii1 = (int)letterInString;
 				if(ascii == ascii1){

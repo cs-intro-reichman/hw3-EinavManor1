@@ -34,7 +34,7 @@ public class LoanCalc {
 				ratePrecent = (ratePrecent+1);
 				double paymentLeft = (loan - payment); 
 				loan = (paymentLeft*(ratePrecent));
-				System.out.println(loan);
+				//System.out.println(loan);
 		}
 		return loan;
 	}
